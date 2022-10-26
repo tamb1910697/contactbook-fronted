@@ -33,6 +33,13 @@
                     <i class="fas fa-address-card" />
                 </h4>
                 <ContactCard :contact="activeContact" />
+                <router-link :to="{
+                name: 'contact.edit',
+                params: { id: activeContact.id },
+                }">
+                    <span class="mt-2 badge badge-warning">
+                        <i class="fas fa-edit" />Edit</span>
+                </router-link>
             </div>
         </div>
     </div>
@@ -101,7 +108,7 @@ export default {
             this.activeIndex = -1;
         },
         async onDeleteContacts() {
-            if (confirm('Bạn muốn xóa tất cả Liên hệ?')) {
+            if (confirm('Are you sure delete all contact?')) {
                 try {
                     await contactService.deleteMany();
                     this.refreshList();

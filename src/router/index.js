@@ -7,6 +7,18 @@ const routes = [
         component: ContactBook,
     },
     {
+        path: '/contacts/add',
+        name: 'contact.add',
+        component: () => import('@/views/ContactAdd.vue'),
+        // props: (route) => ({ contactId: parseInt(route.params.id) })
+    },
+    {
+        path: '/contacts/:id',
+        name: 'contact.edit',
+        component: () => import('@/views/ContactEdit.vue'),
+        props: (route) => ({ contactId: parseInt(route.params.id) })
+    },
+    {
         path: '/:pathMatch(.*)*',
         name: 'notfound',
         component: () => import('@/views/NotFound.vue'),
